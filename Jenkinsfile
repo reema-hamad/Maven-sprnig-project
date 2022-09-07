@@ -42,10 +42,10 @@ pipeline {
                 }
             }
         }
-        stage('Publish artifacts to S3 Bucket') {
+       stage('Publish artifacts to S3 Bucket') {
             steps {
-                sh "aws configure set region us-west-1"
-                sh "aws s3 cp ./target/Maven-java-spring-boot-0.0.1-SNAPSHOT.jar s3://$AWS_S3_BUCKET/$ARTIFACT_NAME"
+                sh "aws configure set region us-east-1"
+                sh "aws s3 cp ./target/**.jar s3://$AWS_S3_BUCKET/$ARTIFACT_NAME"
             }
          }
         stage('Deploy') {
@@ -54,6 +54,7 @@ pipeline {
                 sh 'aws elasticbeanstalk update-environment --application-name $AWS_EB_APP_NAME --environment-name $AWS_EB_ENVIRONMENT --version-label $AWS_EB_APP_VERSION'
             }
          }
+        
         
 
     }
