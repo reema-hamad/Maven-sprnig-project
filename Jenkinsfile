@@ -5,9 +5,9 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
         AWS_S3_BUCKET = "artefact-bucket-repo1"
         ARTIFACT_NAME = "spring-boot.jar"
-        AWS_EB_APP_NAME = "java-webapp"
+        AWS_EB_APP_NAME = "eb-project"
         AWS_EB_APP_VERSION = "${BUILD_ID}"
-        AWS_EB_ENVIRONMENT = "Javawebapp-env"
+        AWS_EB_ENVIRONMENT = "Ebproject-env"
     }
     stages {
         stage('Validate') {
